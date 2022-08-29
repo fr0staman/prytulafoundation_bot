@@ -10,11 +10,11 @@ use crate::types::*;
 #[derive(BotCommands, Clone)]
 #[command(rename = "lowercase", description = "Admin commands")]
 pub enum AdminCommands {
-    #[command(description = "ОртримаGet or set by argument hello message to user")]
+    #[command(description = "Get or set hello message to user")]
     Hello,
-    #[command(description = "Get hello message to user by example")]
+    #[command(description = "Get or set /help message to user")]
     Help,
-    #[command(description = "Start of admin.")]
+    #[command(description = "Start of admin")]
     Start,
 }
 
@@ -33,7 +33,7 @@ pub async fn filter_admin_commands(msg: Message, bot: MyBot, cmd: AdminCommands)
                 "Готово, привітання виставлене!".to_string()
             }
         },
-        AdminCommands::Start => "Привіт, Адмін!".to_string(),
+        AdminCommands::Start => "Вітаю, Адмін!".to_string(),
         AdminCommands::Help => {
             let text = msg.text().unwrap();
 
@@ -44,7 +44,7 @@ pub async fn filter_admin_commands(msg: Message, bot: MyBot, cmd: AdminCommands)
             } else {
                 let _ = db::set_help_msg(second.to_string()).await;
 
-                "Готово, текст для команди help виставлено!".to_string()
+                "Готово, текст для команди /help виставлено!".to_string()
             }
         },
     };

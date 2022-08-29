@@ -10,7 +10,7 @@ use teloxide::{
 use crate::{db, types::MyBot};
 
 #[derive(BotCommands, Clone)]
-#[command(rename = "lowercase", description = "Admin commands")]
+#[command(rename = "lowercase", description = "User commands")]
 pub enum UserCommands {
     #[command(description = "User help")]
     Help,
